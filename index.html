@@ -95,17 +95,17 @@
             transform: scale(1.01);
         }
 
-        /* Marcador HUD */
-        .hud-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #0b1329;
-            border: 1px solid var(--neon-blue);
-            border-radius: 16px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            font-weight: bold;
+        <!-- Marcador HUD con Botón de Música -->
+<div class="hud-bar">
+    <div class="hud-rank" id="hud-rank-label">Cadete Explorador</div>
+    <div style="color:var(--neon-gold);">XP: <span id="xp-counter">0</span> ⭐</div>
+    <div style="color:var(--neon-red);" id="lives-counter">❤️❤️❤️</div>
+    
+    <!-- Botón de música -->
+    <button id="music-btn" onclick="toggleMusic()" style="background: rgba(6, 182, 212, 0.2); border: 1px solid var(--neon-cyan); color: #fff; padding: 6px 12px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.85rem;">
+        🔊 Música: ON
+    </button>
+</div>
         }
 
         .hud-rank {
@@ -752,4 +752,6 @@
     }
 </script>
 </body>
+    <!-- Reproductor de música en bucle -->
+<audio id="bg-music" loop src="musica.mp3"></audio>
 </html>
