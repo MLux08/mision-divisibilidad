@@ -73,7 +73,7 @@
             margin-top: 5px;
         }
 
-        /* Banners Principales */
+        /* Banners Principales (11.png y 12.png) */
         .hero-banner-container, .level-map-container {
             width: 100%;
             margin-bottom: 20px;
@@ -94,10 +94,19 @@
             transform: scale(1.01);
         }
 
+        /* Marcador HUD */
         .hud-bar {
             display: flex;
-            gap: 12px;
+            justify-content: space-between;
             align-items: center;
+            background-color: #0b1329;
+            border: 1px solid var(--neon-blue);
+            border-radius: 16px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .hud-rank {
@@ -261,13 +270,15 @@
         <img src="11.png" alt="Portada Misión Divisibilidad" class="hero-banner-img">
     </div>
 
-    <!-- Marcador HUD -->
+    <!-- Marcador HUD con Botón de Música -->
     <div class="hud-bar">
         <div class="hud-rank" id="hud-rank-label">Cadete Explorador</div>
         <div style="color:var(--neon-gold);">XP: <span id="xp-counter">0</span> ⭐</div>
         <div style="color:var(--neon-red);" id="lives-counter">❤️❤️❤️</div>
-        <button id="music-btn" onclick="toggleMusic()" style="background: rgba(6, 182, 212, 0.2); border: 1px solid var(--neon-cyan); color: #fff; padding: 6px 12px; border-radius: 12px; cursor: pointer;">
-            🔇 Música: OFF
+        
+        <!-- Botón de Control de Sonido -->
+        <button id="music-btn" onclick="toggleMusic()" style="background: rgba(6, 182, 212, 0.2); border: 1px solid var(--neon-cyan); color: #fff; padding: 6px 12px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.85rem;">
+            🔊 Música: ON
         </button>
     </div>
 
@@ -297,22 +308,22 @@
             <p>Observa la imagen superior. Si la división <strong>56 : 8 = 7</strong> es exacta (resto 0), ¿cuál de las siguientes opciones expresa correctamente la relación entre sus números?</p>
             <div class="options-list">
                 <label class="opt-btn"><input type="radio" name="z1_q1" value="0"> 8 es múltiplo de 56 y 56 es divisor de 8.</label>
-                <label class="opt-btn"><input type="radio" name="z1_q1" value="1"> 56 es múltiplo de 8 (y de 7), y 8 (junto con 7) son divisores exactos de 56.</label>
-                <label class="opt-btn"><input type="radio" name="z1_q1" value="2"> Ambos números son primos absolutos.</label>
+                <label class="opt-btn"><input type="radio" name="z1_q1" value="1"> 56 es múltiplo de 8 (y de 7), y 8 (junto con 7) son divisores de 56.</label>
+                <label class="opt-btn"><input type="radio" name="z1_q1" value="2"> 56 y 8 son números primos entre sí.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z1_q1', 1, 'fb_z1_1', '¡Correcto! Si A se divide exactamente por B (56 : 8 = 7 con resto 0), entonces A es múltiplo de B (56 = 8 x 7) y B es divisor de A. Además 7 también es divisor exacto de 56.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z1_q1', 1, 'fb_z1_1', '¡Correcto! Si A se divide exactamente entre B (56 : 8 = 7 con resto 0), entonces A es múltiplo de B (56 = 8 x 7) y B es divisor exacto de A.')">Comprobar y Razonar</button>
             <div id="fb_z1_1" class="feedback-panel"></div>
         </div>
 
         <div class="quest-card">
             <div class="quest-title">Ejercicio 1.2: Múltiplos en Compras de Almacén</div>
-            <p>Las botellas de agua se comercializan en cajas de 6 unidades. ¿Cuál de las siguientes opciones de cantidad NO se puede comprar en cajas completas?</p>
+            <p>Las botellas de agua se comercializan en cajas de 6 unidades. ¿Cuál de las siguientes cantidades NO se puede comprar en cajas completas?</p>
             <div class="options-list">
                 <label class="opt-btn"><input type="radio" name="z1_q2" value="0"> 18 botellas</label>
                 <label class="opt-btn"><input type="radio" name="z1_q2" value="1"> 15 botellas</label>
                 <label class="opt-btn"><input type="radio" name="z1_q2" value="2"> 24 botellas</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z1_q2', 1, 'fb_z1_2', '¡Correcto! 15 no es múltiplo de 6 porque al dividir 15 : 6 obtenemos 2 cajas con resto 3 botellas (división inexacta).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z1_q2', 1, 'fb_z1_2', '¡Correcto! 15 no es múltiplo de 6 porque al dividir 15 : 6 obtenemos 2 cajas completas y sobran 3 botellas (división inexacta). Las cantidades de 18 (6x3) y 24 (6x4) sí son múltiplos de 6.')">Comprobar y Razonar</button>
             <div id="fb_z1_2" class="feedback-panel"></div>
         </div>
 
@@ -324,7 +335,7 @@
                 <label class="opt-btn"><input type="radio" name="z1_q3" value="1"> Una división inexacta con resto distinto de cero.</label>
                 <label class="opt-btn"><input type="radio" name="z1_q3" value="2"> Un resultado mayor que 100.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z1_q3', 0, 'fb_z1_3', '¡Correcto! Por definición matemática, un número b divide a a solo si la división a : b es exacta (resto = 0).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z1_q3', 0, 'fb_z1_3', '¡Correcto! Por definición matemática, un número b divide a a solo cuando la división a : b es exacta (resto = 0).')">Comprobar y Razonar</button>
             <div id="fb_z1_3" class="feedback-panel"></div>
         </div>
 
@@ -336,7 +347,7 @@
                 <label class="opt-btn"><input type="radio" name="z1_q4" value="1"> El 0 es divisor de todos los números naturales.</label>
                 <label class="opt-btn"><input type="radio" name="z1_q4" value="2"> Todos los números tienen un número infinito de divisores.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z1_q4', 0, 'fb_z1_4', '¡Correcto! El 1 divide a todos los números (n : 1 = n) y el mayor divisor exacto de n es n (n : n = 1).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z1_q4', 0, 'fb_z1_4', '¡Correcto! El 1 divide a todos los números (n : 1 = n) y el mayor divisor exacto de n es n (n : n = 1). Además, los divisores forman un conjunto finito.')">Comprobar y Razonar</button>
             <div id="fb_z1_4" class="feedback-panel"></div>
         </div>
 
@@ -347,7 +358,7 @@
                 <label class="opt-btn"><input type="radio" name="z1_q5" value="0"> Sí, es posible.</label>
                 <label class="opt-btn"><input type="radio" name="z1_q5" value="1"> No, es imposible.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z1_q5', 1, 'fb_z1_5', '¡Correcto! No es posible porque 245 : 4 = 61 con un resto de 1 € (división inexacta).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z1_q5', 1, 'fb_z1_5', '¡Correcto! Es imposible porque 245 : 4 = 61 con un resto de 1 € (división inexacta). Para que fuera posible, 245 tendría que ser un múltiplo exacto de 4.')">Comprobar y Razonar</button>
             <div id="fb_z1_5" class="feedback-panel"></div>
         </div>
     </div>
@@ -366,7 +377,7 @@
                 <label class="opt-btn"><input type="radio" name="z2_q1" value="1"> Criterios del 3 y del 9 únicamente.</label>
                 <label class="opt-btn"><input type="radio" name="z2_q1" value="2"> Criterio del 6.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z2_q1', 0, 'fb_z2_1', '¡Correcto! El 2 (última cifra par), el 5 (termina en 0 o 5) y el 10 (termina en 0) solo se comprueban mirando la última cifra.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z2_q1', 0, 'fb_z2_1', '¡Correcto! El 2 (última cifra par: 0,2,4,6,8), el 5 (termina en 0 o 5) y el 10 (termina en 0) se comprueban observando exclusivamente la última cifra del número.')">Comprobar y Razonar</button>
             <div id="fb_z2_1" class="feedback-panel"></div>
         </div>
 
@@ -376,9 +387,9 @@
             <div class="options-list">
                 <label class="opt-btn"><input type="radio" name="z2_q2" value="0"> La suma debe resultar en un múltiplo de 3 o de 9 respectivamente.</label>
                 <label class="opt-btn"><input type="radio" name="z2_q2" value="1"> La suma debe ser siempre un número par.</label>
-                <label class="opt-btn"><input type="radio" name="z2_q2" value="2"> La suma debe ser igual a 10.</label>
+                <label class="opt-btn"><input type="radio" name="z2_q2" value="2"> La suma debe ser exactamente igual a 10.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z2_q2', 0, 'fb_z2_2', '¡Correcto! Para el 3, sumamos sus cifras y comprobamos si el resultado es múltiplo de 3; para el 9, si es múltiplo de 9.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z2_q2', 0, 'fb_z2_2', '¡Correcto! Para el 3, sumamos sus cifras y comprobamos si el resultado es múltiplo de 3 (ej. 54 ➔ 5+4=9, múltiplo de 3). Para el 9, la suma debe ser un múltiplo de 9.')">Comprobar y Razonar</button>
             <div id="fb_z2_2" class="feedback-panel"></div>
         </div>
 
@@ -386,11 +397,11 @@
             <div class="quest-title">Ejercicio 2.3: La Regla Híbrida del Número 6</div>
             <p>¿Qué requisitos debe verificar un número para ser divisible por 6?</p>
             <div class="options-list">
-                <label class="opt-btn"><input type="radio" name="z2_q3" value="0"> Ser divisible por 2 (par) y por 3 (suma de cifras múltiplo de 3) simultáneamente.</label>
+                <label class="opt-btn"><input type="radio" name="z2_q3" value="0"> Ser divisible por 2 (par) y por 3 (suma de cifras múltiplo de 3) de forma simultánea.</label>
                 <label class="opt-btn"><input type="radio" name="z2_q3" value="1"> Terminar en la cifra 6 exclusivamente.</label>
                 <label class="opt-btn"><input type="radio" name="z2_q3" value="2"> Ser un número impar múltiplo de 9.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z2_q3', 0, 'fb_z2_3', '¡Correcto! Como 6 = 2 x 3, para que un número sea divisible por 6 tiene que cumplir obligatoriamente la regla del 2 y la del 3.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z2_q3', 0, 'fb_z2_3', '¡Correcto! Como 6 = 2 x 3, para que un número sea divisible por 6 debe cumplir obligatoriamente la regla del 2 y la regla del 3 al mismo tiempo.')">Comprobar y Razonar</button>
             <div id="fb_z2_3" class="feedback-panel"></div>
         </div>
 
@@ -402,7 +413,7 @@
                 <label class="opt-btn"><input type="radio" name="z2_q4" value="1"> Por 5 y 10 únicamente.</label>
                 <label class="opt-btn"><input type="radio" name="z2_q4" value="2"> Por ninguno de ellos.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z2_q4', 0, 'fb_z2_4', '¡Correcto! 54 es par (divisible por 2), la suma de sus cifras es 5+4=9 (múltiplo de 3 y de 9), y al cumplir con ambos requisitos también es divisible por 6.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z2_q4', 0, 'fb_z2_4', '¡Correcto! 54 es par (divisible por 2), la suma de sus cifras es 5+4=9 (múltiplo de 3 y de 9), y al cumplir con 2 y 3, ¡también es divisible por 6!')">Comprobar y Razonar</button>
             <div id="fb_z2_4" class="feedback-panel"></div>
         </div>
 
@@ -414,7 +425,7 @@
                 <label class="opt-btn"><input type="radio" name="z2_q5" value="1"> La cifra 2</label>
                 <label class="opt-btn"><input type="radio" name="z2_q5" value="2"> La cifra 5</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z2_q5', 1, 'fb_z2_5', '¡Correcto! Al colocar un 2 obtenemos 372: es par (divisible por 2) y sus cifras suman 3+7+2 = 12, que es múltiplo de 3.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z2_q5', 1, 'fb_z2_5', '¡Correcto! Al colocar un 2 obtenemos 372: es un número par (divisible por 2) y sus cifras suman 3+7+2 = 12, que es un múltiplo de 3.')">Comprobar y Razonar</button>
             <div id="fb_z2_5" class="feedback-panel"></div>
         </div>
     </div>
@@ -432,7 +443,7 @@
                 <label class="opt-btn"><input type="radio" name="z3_q1" value="1"> 11 y 19</label>
                 <label class="opt-btn"><input type="radio" name="z3_q1" value="2"> Todos ellos</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z3_q1', 1, 'fb_z3_1', '¡Correcto! 11 y 19 solo tienen dos divisores (el 1 y ellos mismos).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z3_q1', 1, 'fb_z3_1', '¡Correcto! 11 y 19 solo tienen dos divisores (el 1 y ellos mismos). 15 (divisible por 3 y 5) y 21 (divisible por 3 y 7) son números compuestos.')">Comprobar y Razonar</button>
             <div id="fb_z3_1" class="feedback-panel"></div>
         </div>
 
@@ -444,7 +455,7 @@
                 <label class="opt-btn"><input type="radio" name="z3_q2" value="1"> {2, 4, 6, 8, 18}</label>
                 <label class="opt-btn"><input type="radio" name="z3_q2" value="2"> {1, 3, 6, 18}</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z3_q2', 0, 'fb_z3_2', '¡Correcto! Parejas de factores: 1x18=18, 2x9=18, 3x6=18. Los divisores exactos son {1, 2, 3, 6, 9, 18}.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z3_q2', 0, 'fb_z3_2', '¡Correcto! Parejas de factores: 1x18=18, 2x9=18, 3x6=18. Los divisores que dan división exacta son {1, 2, 3, 6, 9, 18}.')">Comprobar y Razonar</button>
             <div id="fb_z3_2" class="feedback-panel"></div>
         </div>
 
@@ -452,11 +463,11 @@
             <div class="quest-title">Ejercicio 3.3: Justificación de Número Compuesto</div>
             <p>Sin calcular todos sus divisores, ¿cómo demostramos que <strong>140</strong> es un número compuesto?</p>
             <div class="options-list">
-                <label class="opt-btn"><input type="radio" name="z3_q3" value="0"> Porque al terminar en 0 sabemos que es divisible entre 1, 2, 5, 10 y 140 (tiene más de 2 divisores).</label>
+                <label class="opt-btn"><input type="radio" name="z3_q3" value="0"> Porque al terminar en 0 sabemos que es divisible entre 1, 2, 5, 10 y 140.</label>
                 <label class="opt-btn"><input type="radio" name="z3_q3" value="1"> Porque es un número mayor que 100.</label>
                 <label class="opt-btn"><input type="radio" name="z3_q3" value="2"> Porque es impar.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z3_q3', 0, 'fb_z3_3', '¡Correcto! Un número es compuesto si tiene más de dos divisores. Al terminar en 0 sabemos de inmediato que es divisible por 2 y por 5, así que tiene varios divisores.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z3_q3', 0, 'fb_z3_3', '¡Correcto! Un número es compuesto cuando tiene más de dos divisores. Al terminar en 0 sabemos de inmediato que es divisible entre 1, 2, 5, 10 y 140.')">Comprobar y Razonar</button>
             <div id="fb_z3_3" class="feedback-panel"></div>
         </div>
 
@@ -468,7 +479,7 @@
                 <label class="opt-btn"><input type="radio" name="z3_q4" value="1"> 2² x 3²</label>
                 <label class="opt-btn"><input type="radio" name="z3_q4" value="2"> 2 x 3³</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z3_q4', 1, 'fb_z3_4', '¡Correcto! Dividiendo de forma sucesiva entre primos: 36 : 2 = 18; 18 : 2 = 9; 9 : 3 = 3; 3 : 3 = 1. Obtenemos 2² x 3².')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z3_q4', 1, 'fb_z3_4', '¡Correcto! Dividiendo de forma sucesiva entre primos: 36 : 2 = 18; 18 : 2 = 9; 9 : 3 = 3; 3 : 3 = 1. Obtenemos 2 x 2 x 3 x 3 = 2² x 3².')">Comprobar y Razonar</button>
             <div id="fb_z3_4" class="feedback-panel"></div>
         </div>
 
@@ -480,7 +491,7 @@
                 <label class="opt-btn"><input type="radio" name="z3_q5" value="1"> Ningún número par es primo.</label>
                 <label class="opt-btn"><input type="radio" name="z3_q5" value="2"> Todos los números pares son primos.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z3_q5', 0, 'fb_z3_5', '¡Correcto! El 2 solo tiene dos divisores (el 1 y el 2), por lo que es PRIMO. Todos los demás pares son divisibles por 2.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z3_q5', 0, 'fb_z3_5', '¡Correcto! El 2 solo tiene dos divisores (el 1 y el 2), por lo que es PRIMO. Todos los demás números pares son divisibles entre 2 y por tanto compuestos.')">Comprobar y Razonar</button>
             <div id="fb_z3_5" class="feedback-panel"></div>
         </div>
     </div>
@@ -499,7 +510,7 @@
                 <label class="opt-btn"><input type="radio" name="z4_q1" value="1"> 12</label>
                 <label class="opt-btn"><input type="radio" name="z4_q1" value="2"> 2</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z4_q1', 1, 'fb_z4_1', '¡Correcto! Múltiplos de 4: {4, 8, 12, 16, 20, 24...}; múltiplos de 6: {6, 12, 18, 24...}. El menor común es 12.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z4_q1', 1, 'fb_z4_1', '¡Correcto! Múltiplos de 4: {4, 8, 12, 16, 20, 24...}. Múltiplos de 6: {6, 12, 18, 24...}. El menor múltiplo común distinto de 0 es 12.')">Comprobar y Razonar</button>
             <div id="fb_z4_1" class="feedback-panel"></div>
         </div>
 
@@ -511,7 +522,7 @@
                 <label class="opt-btn"><input type="radio" name="z4_q2" value="1"> 3</label>
                 <label class="opt-btn"><input type="radio" name="z4_q2" value="2"> 36</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z4_q2', 0, 'fb_z4_2', '¡Correcto! Divisores de 12: {1, 2, 3, 4, 6, 12}; divisores de 18: {1, 2, 3, 6, 9, 18}. El mayor común es 6.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z4_q2', 0, 'fb_z4_2', '¡Correcto! Divisores de 12: {1, 2, 3, 4, 6, 12}. Divisores de 18: {1, 2, 3, 6, 9, 18}. Los comunes son {1, 2, 3, 6}. El mayor de ellos es 6.')">Comprobar y Razonar</button>
             <div id="fb_z4_2" class="feedback-panel"></div>
         </div>
 
@@ -535,7 +546,7 @@
                 <label class="opt-btn"><input type="radio" name="z4_q4" value="1"> 2² x 3² = 36</label>
                 <label class="opt-btn"><input type="radio" name="z4_q4" value="2"> 12</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z4_q4', 0, 'fb_z4_4', '¡Correcto! Tomamos solo los factores primos que están repetidos en ambos números al menor exponente: 2¹ x 3¹ = 6.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z4_q4', 0, 'fb_z4_4', '¡Correcto! Tomamos solo los factores primos que están repetidos en ambos números elevados al menor exponente: 2¹ x 3¹ = 6.')">Comprobar y Razonar</button>
             <div id="fb_z4_4" class="feedback-panel"></div>
         </div>
 
@@ -547,7 +558,7 @@
                 <label class="opt-btn"><input type="radio" name="z4_q5" value="1"> 0</label>
                 <label class="opt-btn"><input type="radio" name="z4_q5" value="2"> 120</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z4_q5', 0, 'fb_z4_5', '¡Correcto! Cuando dos números no comparten ningún factor primo, su único divisor común es la unidad (1).')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z4_q5', 0, 'fb_z4_5', '¡Correcto! Cuando dos números no comparten ningún factor primo, su único divisor común es la unidad (1). Se dicen primos entre sí.')">Comprobar y Razonar</button>
             <div id="fb_z4_5" class="feedback-panel"></div>
         </div>
     </div>
@@ -564,7 +575,7 @@
                 <label class="opt-btn"><input type="radio" name="z5_q1" value="0"> El m.c.m.</label>
                 <label class="opt-btn"><input type="radio" name="z5_q1" value="1"> El m.c.d.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z5_q1', 0, 'fb_z5_1', '¡Correcto! Para problemas de frecuencias temporales acumuladas (múltiples repeticiones hacia el futuro) calculamos el m.c.m.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z5_q1', 0, 'fb_z5_1', '¡Correcto! Para problemas de frecuencias temporales acumuladas (múltiples repeticiones hacia el futuro) calculamos el m.c.m.(6, 10) = 30 s.')">Comprobar y Razonar</button>
             <div id="fb_z5_1" class="feedback-panel"></div>
         </div>
 
@@ -575,93 +586,212 @@
                 <label class="opt-btn"><input type="radio" name="z5_q2" value="0"> El m.c.d.</label>
                 <label class="opt-btn"><input type="radio" name="z5_q2" value="1"> El m.c.m.</label>
             </div>
-            <button class="action-btn" onclick="evalQuest('z5_q2', 0, 'fb_z5_2', '¡Correcto! Para dividir, fragmentar o repartir objetos en partes máximas iguales sin resto usamos el m.c.d. (24, 36) = 12.')">Comprobar y Razonar</button>
+            <button class="action-btn" onclick="evalQuest('z5_q2', 0, 'fb_z5_2', '¡Correcto! Para dividir, fragmentar o repartir objetos en partes máximas iguales sin resto usamos el m.c.d.(24, 36) = 12 cm.')">Comprobar y Razonar</button>
             <div id="fb_z5_2" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">Ejercicio 5.3: Tamaño del Resultado en m.c.m.</div>
+            <p>Al resolver un problema utilizando el Mínimo Común Múltiplo, ¿cómo es el resultado obtenido respecto a los números de partida?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z5_q3" value="0"> Igual o mayor que los datos del problema.</label>
+                <label class="opt-btn"><input type="radio" name="z5_q3" value="1"> Estrictamente menor que los datos del problema.</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z5_q3', 0, 'fb_z5_3', '¡Correcto! Como buscamos múltiplos comunes por acumulación, el resultado del m.c.m. es un número igual o mayor que los datos originales.')">Comprobar y Razonar</button>
+            <div id="fb_z5_3" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">Ejercicio 5.4: Tamaño del Resultado en m.c.d.</div>
+            <p>Al resolver un problema utilizando el Máximo Común Divisor, ¿cómo es el resultado obtenido respecto a los números de partida?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z5_q4" value="0"> Igual o menor que los datos del problema.</label>
+                <label class="opt-btn"><input type="radio" name="z5_q4" value="1"> Infinitamente mayor que los datos del problema.</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z5_q4', 0, 'fb_z5_4', '¡Correcto! Como el divisor reparte o fragmenta la cantidad original, el resultado del m.c.d. es menor o igual a los números de partida.')">Comprobar y Razonar</button>
+            <div id="fb_z5_4" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">Ejercicio 5.5: Frases Clave en Enunciados</div>
+            <p>¿Qué enunciado indica sin duda que debemos utilizar el **m.c.d.**?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z5_q5" value="0"> "Hacer grupos o repartos con el mayor número de elementos posible sin que sobre ninguno".</label>
+                <label class="opt-btn"><input type="radio" name="z5_q5" value="1"> "¿Cuándo volverán a coincidir tres alarmas que suenan de forma periódica?".</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z5_q5', 0, 'fb_z5_5', '¡Correcto! Las palabras "máximo", "mayor posible", "repartir sin que sobre nada" o "hacer lotes iguales" identifican al m.c.d.')">Comprobar y Razonar</button>
+            <div id="fb_z5_5" class="feedback-panel"></div>
         </div>
     </div>
 
-    <!-- resto del contenido... -->
+    <!-- NIVEL 6: COLISEO DE PROBLEMAS APLICADOS (5 EJERCICIOS) -->
+    <div id="zone-6" class="zone-card">
+        <div class="zone-title">Nivel 6: Coliseo de Problemas Aplicados (Graduados por Dificultad)</div>
+
+        <div class="quest-card">
+            <div class="quest-title">🟢 Problema 6.1: Reparto de Flores</div>
+            <p>Una florista tiene 12 rosas rojas y 16 claveles blancos. Quiere hacer ramos iguales con el mayor número de flores posible sin mezclar. ¿Cuántas flores tendrá cada ramo?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z6_q1" value="0"> 4 flores por ramo</label>
+                <label class="opt-btn"><input type="radio" name="z6_q1" value="1"> 6 flores por ramo</label>
+                <label class="opt-btn"><input type="radio" name="z6_q1" value="2"> 48 flores por ramo</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z6_q1', 0, 'fb_z6_1', '¡Correcto! Como es un reparto máximo sin mezcla, hallamos m.c.d.(12, 16) = 4 flores por ramo (formando 3 ramos de rosas y 4 de claveles).')">Comprobar y Razonar</button>
+            <div id="fb_z6_1" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">🟢 Problema 6.2: Toma de Medicinas de Julio</div>
+            <p>Julio toma un jarabe cada 8 horas y una pastilla cada 12 horas. Si se tomó ambos medicamentos a las 8:00 AM de hoy, ¿a qué hora volverá a coincidir la toma?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z6_q2" value="0"> A las 8:00 AM de mañana</label>
+                <label class="opt-btn"><input type="radio" name="z6_q2" value="1"> A las 2:00 PM del mismo día</label>
+                <label class="opt-btn"><input type="radio" name="z6_q2" value="2"> A las 8:00 PM del mismo día</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z6_q2', 0, 'fb_z6_2', '¡Correcto! Buscamos la primera coincidencia temporal futura 👉 m.c.m.(8, 12) = 24 horas. Volverán a coincidir exactamente tras 24 h (a las 8:00 AM de mañana).')">Comprobar y Razonar</button>
+            <div id="fb_z6_2" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">🟠 Problema 6.3: Coincidencia de Semáforos</div>
+            <p>Un semáforo se pone en rojo cada 36 s y otro cada 20 s. Si acaban de coincidir en rojo, ¿cuántos minutos pasarán como mínimo para volver a coincidir?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z6_q3" value="0"> 1 minuto</label>
+                <label class="opt-btn"><input type="radio" name="z6_q3" value="1"> 3 minutos</label>
+                <label class="opt-btn"><input type="radio" name="z6_q3" value="2"> 5 minutos</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z6_q3', 1, 'fb_z6_3', '¡Correcto! m.c.m.(36, 20) = 180 segundos. Como 1 minuto tiene 60 segundos, dividimos 180 : 60 = 3 minutos.')">Comprobar y Razonar</button>
+            <div id="fb_z6_3" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">🟠 Problema 6.4: Tiendas en el Campamento</div>
+            <p>A un campamento acuden 60 estudiantes. Tienen que distribuirse en tiendas con el mismo número de personas. ¿Cuál de los siguientes tamaños de grupo es IMPOSIBLE sin dejar a nadie fuera?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z6_q4" value="0"> Tiendas de 5 personas</label>
+                <label class="opt-btn"><input type="radio" name="z6_q4" value="1"> Tiendas de 6 personas</label>
+                <label class="opt-btn"><input type="radio" name="z6_q4" value="2"> Tiendas de 7 personas</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z6_q4', 2, 'fb_z6_4', '¡Correcto! 7 no es divisor exacto de 60 (60 : 7 = 8 con resto 4 personas que quedarían sin tienda). 5 y 6 sí son divisores exactos de 60.')">Comprobar y Razonar</button>
+            <div id="fb_z6_4" class="feedback-panel"></div>
+        </div>
+
+        <div class="quest-card">
+            <div class="quest-title">🔴 Problema 6.5: Construcción de Torres de Colores</div>
+            <p>Paula tiene 40 piezas amarillas y 25 azules. Quiere construir torres del mismo color y con el mismo número de piezas en cada una. Si quiere que sean lo más altas posible, ¿cuántas piezas tendrá cada torre?</p>
+            <div class="options-list">
+                <label class="opt-btn"><input type="radio" name="z6_q5" value="0"> 5 piezas</label>
+                <label class="opt-btn"><input type="radio" name="z6_q5" value="1"> 8 piezas</label>
+                <label class="opt-btn"><input type="radio" name="z6_q5" value="2"> 10 piezas</label>
+            </div>
+            <button class="action-btn" onclick="evalQuest('z6_q5', 0, 'fb_z6_5', '¡Correcto! Buscamos la máxima división común 👉 m.c.d.(40, 25) = 5 piezas por torre (construirá 8 torres amarillas y 5 torres azules).')">Comprobar y Razonar</button>
+            <div id="fb_z6_5" class="feedback-panel"></div>
+        </div>
+    </div>
+
+    <!-- NIVEL 7: LOGRO FINAL Y RECOMPENSA -->
+    <div id="zone-7" class="zone-card">
+        <div class="zone-title">Nivel 7: ¡Insignia de Maestro Explorador Desbloqueada!</div>
+        <img src="10.bmp" alt="Recompensa de Nivel Completado" class="infographic-img">
+
+        <div style="text-align: center; padding: 15px;">
+            <p style="font-size: 1.25rem; color: var(--neon-gold); font-weight: bold;">¡Enhorabuena, Explorador Supremo!</p>
+            <p style="color: var(--text-sub); margin-top: 8px; line-height: 1.6;">Has completado con éxito los 30 ejercicios de la unidad. Has demostrado un dominio absoluto de múltiplos, divisores, criterios visuales, números primos, descomposición factorial y resolución de problemas con m.c.m. y m.c.d.</p>
+        </div>
+    </div>
 </div>
 
-<audio id="bg-music" loop preload="auto" src="musica.mp3"></audio>
+<!-- Reproductor de Audio de Fondo -->
+<audio id="bg-music" loop src="musica.mp3"></audio>
 
 <script>
-  let isMusicPlaying = false;
-  const bgMusic = document.getElementById('bg-music');
+    let playerXP = 0;
+    let playerLives = 3;
+    let isMusicPlaying = false;
 
-  bgMusic.volume = 0.3;
-  bgMusic.muted = false;
-
-  function updateMusicButton() {
+    const bgMusic = document.getElementById('bg-music');
     const musicBtn = document.getElementById('music-btn');
-    if (!musicBtn) return;
-    musicBtn.textContent = isMusicPlaying ? '🔊 Música: ON' : '🔇 Música: OFF';
-  }
 
-  function startMusic() {
-    if (isMusicPlaying || !bgMusic) return;
+    // Ajuste de volumen (30%)
+    bgMusic.volume = 0.3;
 
-    const playPromise = bgMusic.play();
-    if (playPromise) {
-      playPromise
-        .then(() => {
-          isMusicPlaying = true;
-          updateMusicButton();
-        })
-        .catch(() => {
-          console.log('Esperando interacción del usuario para iniciar la música...');
-        });
-    }
-  }
+    // Reproducción automática tras el primer clic del usuario en la pantalla
+    document.addEventListener('click', function startAudioOnFirstUserInteraction() {
+        if (!isMusicPlaying) {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                if (musicBtn) musicBtn.innerText = '🔊 Música: ON';
+            }).catch(error => {
+                console.log("El navegador requiere interacción previa para iniciar el audio.");
+            });
+        }
+    }, { once: true });
 
-  document.addEventListener('pointerdown', startMusic, { once: true });
-  document.addEventListener('keydown', startMusic, { once: true });
-
-  function toggleMusic() {
-    if (!bgMusic) return;
-
-    if (bgMusic.paused) {
-      bgMusic.play()
-        .then(() => {
-          isMusicPlaying = true;
-          updateMusicButton();
-        })
-        .catch(() => {
-          console.log('La música no se pudo iniciar. Debe haber interacción del usuario.');
-        });
-    } else {
-      bgMusic.pause();
-      isMusicPlaying = false;
-      updateMusicButton();
-    }
-  }
-
-  function openZone(zoneId) {
-    document.querySelectorAll('.zone-card').forEach((zone) => {
-      zone.classList.toggle('active', zone.id === zoneId);
-    });
-
-    document.querySelectorAll('.map-zone-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.getAttribute('onclick') === `openZone('${zoneId}')`);
-    });
-  }
-
-  function evalQuest(name, expectedValue, targetId, successMessage) {
-    const selected = document.querySelector(`input[name="${name}"]:checked`);
-    const feedback = document.getElementById(targetId);
-
-    if (!selected) {
-      feedback.className = 'feedback-panel incorrect';
-      feedback.textContent = 'Primero elige una opción.';
-      feedback.style.display = 'block';
-      return;
+    // Alternar música mediante el botón
+    function toggleMusic() {
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            isMusicPlaying = false;
+            musicBtn.innerText = '🔇 Música: OFF';
+        } else {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicBtn.innerText = '🔊 Música: ON';
+            }).catch(err => console.log("Error al reproducir audio:", err));
+        }
     }
 
-    const isCorrect = Number(selected.value) === expectedValue;
-    feedback.className = `feedback-panel ${isCorrect ? 'correct' : 'incorrect'}`;
-    feedback.textContent = isCorrect ? successMessage : 'No es la respuesta correcta. Intenta otra vez.';
-    feedback.style.display = 'block';
-  }
+    function openZone(zoneId) {
+        document.querySelectorAll('.zone-card').forEach(z => z.classList.remove('active'));
+        document.querySelectorAll('.map-zone-btn').forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(zoneId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function evalQuest(name, correctVal, fbId, expText) {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        const fb = document.getElementById(fbId);
+        fb.style.display = 'block';
+
+        if (!selected) {
+            fb.className = 'feedback-panel incorrect';
+            fb.innerHTML = '⚠️ Por favor, selecciona una respuesta antes de comprobar.';
+            return;
+        }
+
+        if (parseInt(selected.value) === correctVal) {
+            fb.className = 'feedback-panel correct';
+            fb.innerHTML = '<strong>¡RESPUESTA CORRECTA! 🌟 (+100 XP)</strong><br>' + expText;
+            updateXP(100);
+        } else {
+            fb.className = 'feedback-panel incorrect';
+            fb.innerHTML = '<strong>¡RESPUESTA INCORRECTA! ❌</strong><br>' + expText;
+            updateLives(-1);
+        }
+    }
+
+    function updateXP(pts) {
+        playerXP += pts;
+        document.getElementById('xp-counter').innerText = playerXP;
+        
+        const rankLbl = document.getElementById('hud-rank-label');
+        if (playerXP >= 2500) rankLbl.innerText = '🥇 Maestro Explorador Supremo';
+        else if (playerXP >= 1200) rankLbl.innerText = '🥈 Caballero de la Divisibilidad';
+        else rankLbl.innerText = '🥉 Cadete Explorador';
+    }
+
+    function updateLives(delta) {
+        playerLives += delta;
+        if (playerLives < 0) playerLives = 0;
+        document.getElementById('lives-counter').innerText = '❤️'.repeat(playerLives);
+        
+        if (playerLives === 0) {
+            alert('¡Has agotado tu energía! Revisa las explicaciones y vuelve a intentarlo.');
+            playerLives = 3;
+            document.getElementById('lives-counter').innerText = '❤️❤️❤️';
+        }
+    }
 </script>
 </body>
 </html>
