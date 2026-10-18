@@ -750,7 +750,37 @@
             document.getElementById('lives-counter').innerText = '❤️❤️❤️';
         }
     }
-</script>
+</script>let isMusicPlaying = false;
+const bgMusic = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-btn');
+
+// Ajustar volumen (opcional, entre 0.0 y 1.0)
+bgMusic.volume = 0.3; 
+
+// Iniciar música automáticamente al primer clic del usuario en cualquier parte de la pantalla
+document.addEventListener('click', function startAudioOnFirstUserInteraction() {
+    if (!isMusicPlaying) {
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicBtn.innerText = '🔊 Música: ON';
+        }).catch(error => {
+            console.log("El navegador esperó a la interacción del usuario.");
+        });
+    }
+}, { once: true });
+
+// Función para pausar o reanudar manualmente con el botón
+function toggleMusic() {
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        musicBtn.innerText = '🔇 Música: OFF';
+    } else {
+        bgMusic.play();
+        isMusicPlaying = true;
+        musicBtn.innerText = '🔊 Música: ON';
+    }
+}
 </body>
     <!-- Reproductor de música en bucle -->
 <audio id="bg-music" loop src="musica.mp3"></audio>
