@@ -567,7 +567,37 @@
             <button class="action-btn" onclick="evalQuest('z5_q1', 0, 'fb_z5_1', '¡Correcto! Para problemas de frecuencias temporales acumuladas (múltiples repeticiones hacia el futuro) calcula el m.c.m.')">Comprobar y Razonar</button>
             <div id="fb_z5_1" class="feedback-panel"></div>
         </div>
+<!-- Etiqueta del audio -->
+<audio id="bg-music" loop src="musica.mp3"></audio>
 
+<script>
+  let isMusicPlaying = false;
+  const bgMusic = document.getElementById('bg-music');
+
+  // Ajusta el volumen (0.3 es un 30% de volumen para que no moleste)
+  bgMusic.volume = 0.3;
+
+  // Se activa al hacer el primer clic en cualquier sitio de la web
+  document.addEventListener('click', function startMusic() {
+      if (!isMusicPlaying) {
+          bgMusic.play().then(() => {
+              isMusicPlaying = true;
+          }).catch(err => console.log("Esperando interacción..."));
+      }
+  }, { once: true });
+
+  function toggleMusic() {
+      if (isMusicPlaying) {
+          bgMusic.pause();
+          isMusicPlaying = false;
+          document.getElementById('music-btn').innerText = '🔇 Música: OFF';
+      } else {
+          bgMusic.play();
+          isMusicPlaying = true;
+          document.getElementById('music-btn').innerText = '🔊 Música: ON';
+      }
+  }
+</script>
         <div class="quest-card">
             <div class="quest-title">Ejercicio 5.2: Cortar Materiales en Partes Iguales</div>
             <p>"Un carpintero quiere cortar listones de 24 cm y 36 cm en trozos iguales lo más largos posible sin desperdiciar nada." ¿Qué cálculo debes aplicar?</p>
